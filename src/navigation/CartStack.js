@@ -1,13 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Header from '../components/Header'
+import Cart from '../screens/Cart'
+
+const Stack = createNativeStackNavigator()
 
 const CartStack = () => {
   return (
-    <View>
-      <Text>CartStack</Text>
-    </View>
+    <Stack.Navigator
+      screenOptions={(
+          () => {
+              return {
+                  header: () => <Header title="Carrito"/>
+              }
+          }
+      )}
+    >
+      <Stack.Screen name='Cart' component={Cart}/>
+    </Stack.Navigator>
   )
 }
 
 export default CartStack
-
-const styles = StyleSheet.create({})

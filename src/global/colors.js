@@ -1,3 +1,21 @@
 export const colors = {
-    green: ""
+    green1: "#2f4f4f",
+    green2: "#1f3333",
+    green3: "#283c46",
+    green4: "#183030",
+    green5: "#3bc0ed33",
+    blue: "#0000ff",
+    red1: "#ff0000",
+    red2: "#8b0000",
+    red3: "#31000a",
+    black1: "#000000",
+    black2: "#050301",
+    black3: "#131313",
+    gray1: "#3B3C36",
+    gray2: "#333333",
+    gray3: "#222222",
+    gray4: "#28282B",
+    white1: "#fafafa",
+    white2: "#fff5ee",
+    white3: "#bbbbbb"
 }

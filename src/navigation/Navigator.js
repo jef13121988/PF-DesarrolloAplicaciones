@@ -1,13 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native'
+import Categories from '../components/Categories'
 
-const Navigator = () => {
+const MainNavigator = () => {
+
+    
+
+
   return (
-    <View>
-      <Text>Navigator</Text>
-    </View>
+    <NavigationContainer>
+      <Categories/>
+    
+    </NavigationContainer>
   )
 }
 
-export default Navigator
-
-const styles = StyleSheet.create({})
+export default MainNavigator
