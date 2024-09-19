@@ -24,14 +24,17 @@ const styles = StyleSheet.create({
         width:"90%",
         marginHorizontal:"5%",
         backgroundColor:colors.green1,
-        marginVertical:10,
+        marginVertical:7,
         padding:20,
         justifyContent:"center",
         alignItems:"center",
-        borderRadius:3,
- 
+        borderRadius:100,
+        borderColor:colors.green2,
+        borderWidth:3
     },
     text:{
-        fontSize:16
+        fontSize:20,
+        color:colors.white1,
+        fontWeight:"bold"
     }
 })

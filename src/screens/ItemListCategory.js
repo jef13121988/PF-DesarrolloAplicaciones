@@ -4,6 +4,7 @@ import Search from '../components/Search'
 import ProductItem from '../components/ProductItem'
 import { useGetProductsQuery } from '../services/shop'
 import LoadingSpinner from '../components/LoadingSpinner'
+import { colors } from '../global/colors'
 
 
 const ItemListCategory = ({route}) => {
@@ -47,6 +48,8 @@ export default ItemListCategory
 
 const styles = StyleSheet.create({
   container:{
-    width:"100%"
+    width:"100%",
+    backgroundColor:colors.black1,
+    flex:1
   }
 })

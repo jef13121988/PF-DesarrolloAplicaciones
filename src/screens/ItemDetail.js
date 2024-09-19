@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, Text, View} from 'react-native'
+import { Image, Pressable, StyleSheet, ScrollView, Text, View} from 'react-native'
 import { colors } from '../global/colors'
 import { addItemCart } from '../features/cart/cartSlice'
 import { useDispatch } from 'react-redux'
@@ -24,28 +24,26 @@ const ItemDetail = ({route}) => {
   if(isLoading) return <LoadingSpinner/>
 
   return (
-    <View style={styles.container}>
-      <View style={styles.containerDetail}>
-        <Image
-          style={styles.image}
-          resizeMode='contain'
-          source={{uri:URL_THUMBNAIL+product.imagen}}
-        />
-        <View style={styles.containerText}>
-          <Text style={styles.title}>{product.nombre}</Text>
-          <Text style={styles.characteristic}><B>Características:</B> otorga {product.valor} de {product.cualidad}.</Text>
-          <Text style={styles.description}>{product.descripcion}</Text>
-          <Text style={styles.price}><B>Precio:</B> <Image
-          style={styles.coin}
-          resizeMode='contain'
-          source={"../../assets/moneda.svg"}
-          /> {product.precio}</Text>
-        </View>
-        <Pressable style={styles.button} onPress={handleAddItemCart}>
-          <Text style={styles.buttonText}>Comprar</Text>
-        </Pressable>
+    <ScrollView style={styles.container}>
+      <Image
+        style={styles.image}
+        resizeMode='contain'
+        source={{uri:URL_THUMBNAIL+product.imagen}}
+      />
+      <View style={styles.containerText}>
+        <Text style={styles.title}>{product.nombre}</Text>
+        <Text style={styles.characteristic}><B>Características:</B> otorga {product.valor} de {product.cualidad}.</Text>
+        <Text style={styles.description}><B>Descripción:</B>{"\n"}{product.descripcion}</Text>
+        <Text style={styles.price}><B>Precio:</B> <Image
+        style={styles.coin}
+        resizeMode='contain'
+        source={"../../assets/moneda.svg"}
+        /> {product.precio}</Text>
       </View>
-    </View>
+      <Pressable style={styles.button} onPress={handleAddItemCart}>
+        <Text style={styles.buttonText}>AGREGAR AL CARRITO</Text>
+      </Pressable>
+    </ScrollView>
   )
 }
 
@@ -54,16 +52,12 @@ export default ItemDetail
 const styles = StyleSheet.create({
   container:{
     width:"100%",
-    flex: 1,
     backgroundColor:colors.black1
-  },
-  containerDetail:{
-
   },
   containerText:{
     width:"80%",
-    gap:20,
-    margin:20,
+    gap:10,
+    margin:10,
     marginHorizontal:"10%"
   },
   title:{
@@ -87,7 +81,6 @@ const styles = StyleSheet.create({
     color:colors.white1
   },
   image:{
-    width:"100%",
     height:250,
     marginVertical:10
   },
@@ -98,15 +91,17 @@ const styles = StyleSheet.create({
   button:{
     width:"80%",
     marginHorizontal:"10%",
-    backgroundColor:colors.green3,
+    backgroundColor:colors.green6,
     borderRadius:3,
     padding:10,
     alignItems:"center",
     justifyContent:"center",
-    fontSize:20
-
+    fontSize:20,
+    marginBottom:10
   },
   buttonText:{
-    color:"white"
+    color:"white",
+    fontWeight:"bold",
+    fontSize:20
   }
 })

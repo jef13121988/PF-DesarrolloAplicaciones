@@ -38,6 +38,8 @@ const styles = StyleSheet.create({
     },
     image:{
         width:150,
-        height:150
+        height:150,
+        borderColor:colors.green1,
+        borderWidth:3
     }
 })

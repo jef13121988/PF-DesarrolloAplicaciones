@@ -37,17 +37,17 @@ const Search = ({onSearch}) => {
         <View style={styles.containerInput}>
             <TextInput 
                 style={styles.input}
-                placeholderTextColor="#fff"
+                placeholderTextColor={colors.white1}
                 placeholder='Buscar producto'
                 value={input}
                 onChangeText={handleInputChange}
             />
             <View style={styles.buttonContainer}>
                 <Pressable onPress={search}>
-                    <AntDesign name="search1" size={28} color="black" />
+                    <AntDesign name="search1" size={28} color={colors.white1} />
                 </Pressable>
                 <Pressable onPress={handleRemoveInput}>
-                    <MaterialIcons name="cancel" size={28} color="black" />
+                    <MaterialIcons name="cancel" size={28} color={colors.white1} />
                 </Pressable>
             </View>  
         </View>
@@ -60,8 +60,8 @@ export default Search
 
 const styles = StyleSheet.create({
     container:{
-        margin:10,
-        marginTop:20
+        padding:10,
+        margin: 0
     },
     containerInput:{
         flexDirection:"row",

@@ -24,18 +24,21 @@ export default ProductItem
 
 const styles = StyleSheet.create({
     container:{
-        backgroundColor:colors.green1,
-        marginVertical:10,
-        flexDirection:"row",
-        alignItems:"center",
-        padding:10,
         width:"90%",
         marginHorizontal:"5%",
+        backgroundColor:colors.green1,
+        marginVertical:7,
+        padding:10,
+        alignItems:"center",
+        borderRadius:20,
+        flexDirection:"row",
         gap:10,
-        borderRadius:3
+        borderColor:colors.green2,
+        borderWidth:3
     },
     title:{
-        width:"70%"
+        width:"70%",
+        color:colors.white1
     },
     titleMin:{
       fontSize:14

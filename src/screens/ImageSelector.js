@@ -4,12 +4,17 @@ import * as ImagePicker from 'expo-image-picker'
 import { useState } from 'react'
 import { usePatchImageProfileMutation } from '../services/users'
 import { useSelector } from 'react-redux'
+import { useGetUserQuery } from '../services/users'
+import { colors } from '../global/colors'
 
 const ImageSelector = ({navigation}) => {
 
     const [image,setImage] = useState("")
     const [triggerAddImageProfile] = usePatchImageProfileMutation()
     const localId = useSelector(state => state.auth.localId)
+    const {data:user,isLoading} = useGetUserQuery({localId})
+
+    if(isLoading) return <LoadingSpinner/>
 
 
     const pickImage = async () => {
@@ -35,7 +40,7 @@ const ImageSelector = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Image
-        source={image ? {uri:image}:require("../../assets/profile_default.jpg")}
+        source={user.image ? {uri:user.image}:require("../../assets/profile_default.jpg")}
         resizeMode='cover'
         style={styles.image}
       />
@@ -49,12 +54,16 @@ export default ImageSelector
 
 const styles = StyleSheet.create({
     container:{
-        marginTop:70,
+      paddingTop:70,
         alignItems:"center",
-        gap:20
+        gap:20,
+        flex: 1,
+        backgroundColor:colors.black1
     },
     image:{
         width:150,
-        height:150
+        height:150,
+        borderColor:colors.green1,
+        borderWidth:3
     }
 })

@@ -23,7 +23,7 @@ const Cart = ({navigation}) => {
     navigation.navigate("OrdersStack")
 
   }
-  if(cart.total === 0) return <View><Text>Vacío</Text></View>
+  if(cart.total === 0) return <View style={styles.emptyContainer}><Text style={styles.emptyText}>Vacío</Text></View>
   return (
     <View style={styles.container}>
       <FlatList
@@ -46,7 +46,8 @@ export default Cart
 const styles = StyleSheet.create({
     container:{
         justifyContent:"space-between",
-        flex:1
+        flex:1,
+        backgroundColor:colors.black1
     },
     containerConfirm:{
         backgroundColor:colors.green2,
@@ -57,5 +58,21 @@ const styles = StyleSheet.create({
     textConfirm:{
         color:"white",
         fontSize:20
+    },
+    emptyContainer:{
+      flex:1,
+      justifyContent:"top",
+      backgroundColor:colors.black1
+    },
+    emptyText:{
+      fontSize:16,
+      color:colors.white1,
+      width:"90%",
+      marginHorizontal:"5%",
+      backgroundColor:colors.green2,
+      marginVertical:7,
+      padding:20,
+      textAlign:"center",
+      borderRadius:3 
     }
 })
