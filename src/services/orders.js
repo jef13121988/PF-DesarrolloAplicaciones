@@ -6,7 +6,6 @@ export const ordersApi = createApi({
     baseQuery:fetchBaseQuery({baseUrl:URL_FIREBASE}),
     tagTypes:["order"],
     endpoints:(builder) => ({
-
         getOrdersByUser:builder.query({
             query:(localId) =>`/ordenes/${localId}.json`,
             transformResponse:(response) => {

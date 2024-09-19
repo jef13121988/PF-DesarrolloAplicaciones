@@ -4,6 +4,7 @@ import { colors } from '../global/colors'
 import { useDispatch, useSelector } from 'react-redux'
 import { usePostOrderMutation } from '../services/orders'
 import { clearCart } from '../features/cart/cartSlice'
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 
 const Cart = ({navigation}) => {
 
@@ -21,21 +22,30 @@ const Cart = ({navigation}) => {
     triggerPostOrder({localId,order})
     dispatch(clearCart())
     navigation.navigate("OrdersStack")
-
   }
+
+  const handleClearCart = () => {
+    dispatch(clearCart())
+  }
+
+  console.log(cart.items)
+
   if(cart.total === 0) return <View style={styles.emptyContainer}><Text style={styles.emptyText}>Vacío</Text></View>
   return (
     <View style={styles.container}>
       <FlatList
-      data={cart.items}
-      keyExtractor={item => item.id}
-      renderItem={({item})=> <CartItem item={item}/> }
+        data={cart.items}
+        keyExtractor={item => item.id}
+        renderItem={({item})=> <CartItem item={item}/> }
       />
-      <View style={styles.containerConfirm}>
-        <Pressable onPress={handleAddOrder}>
-          <Text style={styles.textConfirm}>Confirmar</Text>
+      <Text style={styles.total}>Total: <FontAwesome6 name="coins" size={20} color="yellow" /> {cart.total}</Text>
+      <View style={styles.buttonContainer}>
+        <Pressable onPress={handleClearCart} style={styles.clearButton}>
+          <Text style={styles.buttonText}>Vaciar Carrito</Text>
         </Pressable>
-        <Text style={styles.textConfirm}>Total: {cart.total} $</Text>
+        <Pressable onPress={handleAddOrder} style={styles.buyButton}>
+          <Text style={styles.buttonText}>Comprar</Text>
+        </Pressable>
       </View>
     </View>
   )
@@ -44,35 +54,64 @@ const Cart = ({navigation}) => {
 export default Cart
 
 const styles = StyleSheet.create({
-    container:{
-        justifyContent:"space-between",
-        flex:1,
-        backgroundColor:colors.black1
-    },
-    containerConfirm:{
-        backgroundColor:colors.green2,
-        padding:20,
-        flexDirection:"row",
-        justifyContent:"space-between"
-    },
-    textConfirm:{
-        color:"white",
-        fontSize:20
-    },
-    emptyContainer:{
-      flex:1,
-      justifyContent:"top",
-      backgroundColor:colors.black1
-    },
-    emptyText:{
-      fontSize:16,
-      color:colors.white1,
-      width:"90%",
-      marginHorizontal:"5%",
-      backgroundColor:colors.green2,
-      marginVertical:7,
-      padding:20,
-      textAlign:"center",
-      borderRadius:3 
-    }
+  container:{
+    justifyContent:"space-between",
+    flex:1,
+    backgroundColor:colors.black1
+  },
+  total:{
+    textAlign:"right",
+    color:colors.white1,
+    fontSize:20,
+    fontWeight:"bold",
+    marginRight:20,
+    marginVertical:10
+  },
+  buttonContainer:{
+    flexDirection:"row",
+    justifyContent:"space-between"
+  },
+  buyButton:{
+    width:"46%",
+    marginHorizontal:"2%",
+    backgroundColor:colors.green6,
+    borderRadius:10,
+    padding:20,
+    alignItems:"center",
+    justifyContent:"center",
+    fontSize:30,
+    marginBottom:10
+  },
+  clearButton:{
+    width:"46%",
+    marginHorizontal:"2%",
+    backgroundColor:colors.red1,
+    borderRadius:10,
+    padding:10,
+    alignItems:"center",
+    justifyContent:"center",
+    fontSize:20,
+    marginBottom:10
+  },
+  buttonText:{
+    color:colors.white1,
+    fontWeight:"bold",
+    fontSize:22
+  },
+  emptyContainer:{
+    flex:1,
+    justifyContent:"top",
+    backgroundColor:colors.black1
+  },
+  emptyText:{
+    fontSize:16,
+    color:colors.white1,
+    width:"90%",
+    marginHorizontal:"5%",
+    backgroundColor:colors.green2,
+    marginVertical:7,
+    padding:20,
+    textAlign:"center",
+    borderRadius:3 
+  }
 })

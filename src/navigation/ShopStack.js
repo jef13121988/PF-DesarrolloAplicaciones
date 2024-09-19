@@ -8,26 +8,26 @@ const Stack = createNativeStackNavigator()
 const ShopStack = () => {
   return (
     <Stack.Navigator
-            screenOptions={(
-                ({route}) => {
-                    return {
-                        header: () => <Header title={
-                            route.name === "Home" ?
-                                "Bienvenido" 
-                            : 
-                                route.name === "Products" ?
-                                    route.params.category
-                                :
-                                    "Detalle del Producto"
-                        } />
-                    }
+        screenOptions={(
+            ({route}) => {
+                return {
+                    header: () => <Header title={
+                        route.name === "Home" ?
+                            "Bienvenido" 
+                        : 
+                            route.name === "Products" ?
+                                route.params.category
+                            :
+                                "Detalle del Producto"
+                    } />
                 }
-            )}
-        >
-            <Stack.Screen name='Home' component={Home}/>
-            <Stack.Screen name='Products' component={ItemListCategory}/>
-            <Stack.Screen name='Detail' component={ItemDetail}/>
-        </Stack.Navigator>
+            }
+        )}
+    >
+        <Stack.Screen name='Home' component={Home}/>
+        <Stack.Screen name='Products' component={ItemListCategory}/>
+        <Stack.Screen name='Detail' component={ItemDetail}/>
+    </Stack.Navigator>
   )
 }
 

@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useGetProductQuery } from '../services/shop'
 import LoadingSpinner from '../components/LoadingSpinner'
 import { URL_IMAGE, URL_THUMBNAIL } from '../firebase/database'
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 const ItemDetail = ({route}) => {
 
@@ -34,11 +35,7 @@ const ItemDetail = ({route}) => {
         <Text style={styles.title}>{product.nombre}</Text>
         <Text style={styles.characteristic}><B>Características:</B> otorga {product.valor} de {product.cualidad}.</Text>
         <Text style={styles.description}><B>Descripción:</B>{"\n"}{product.descripcion}</Text>
-        <Text style={styles.price}><B>Precio:</B> <Image
-        style={styles.coin}
-        resizeMode='contain'
-        source={"../../assets/moneda.svg"}
-        /> {product.precio}</Text>
+        <Text style={styles.price}><B>Precio:</B> <FontAwesome6 name="coins" size={20} color="yellow" /> {product.precio}</Text>
       </View>
       <Pressable style={styles.button} onPress={handleAddItemCart}>
         <Text style={styles.buttonText}>AGREGAR AL CARRITO</Text>
@@ -74,7 +71,8 @@ const styles = StyleSheet.create({
     fontSize:18,
     backgroundColor:colors.gray1,
     padding: 10,
-    color:colors.white1
+    color:colors.white1,
+    borderRadius:10
   },
   price:{
     fontSize:20,
@@ -84,19 +82,14 @@ const styles = StyleSheet.create({
     height:250,
     marginVertical:10
   },
-  coin:{
-    width: 20,
-    height:20
-  },
   button:{
     width:"80%",
     marginHorizontal:"10%",
     backgroundColor:colors.green6,
-    borderRadius:3,
+    borderRadius:10,
     padding:10,
     alignItems:"center",
     justifyContent:"center",
-    fontSize:20,
     marginBottom:10
   },
   buttonText:{

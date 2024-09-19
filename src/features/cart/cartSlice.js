@@ -10,10 +10,10 @@ export const cartSlice = createSlice({
     initialState,
     reducers:{
         addItemCart: (state,action) => {
-            const {id, price, quantity} = action.payload
+            const {id, precio, quantity} = action.payload
             const itemFound = state.items.find(item => item.id === id)
             itemFound ? itemFound.quantity + quantity : state.items.push(action.payload)
-            state.total+= price * quantity
+            state.total+= precio * quantity
         },
         clearCart:(state) => {
             state.items = [],
