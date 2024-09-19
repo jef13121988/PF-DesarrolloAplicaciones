@@ -5,12 +5,12 @@ import LoadingSpinner from './LoadingSpinner'
 
 
 const Categories = () => {
-  const {data:categorias,isLoading} = useGetCategoriesQuery()
+  const {data:categories,isLoading} = useGetCategoriesQuery()
 
   if(isLoading) return <LoadingSpinner/>
   return (
       <FlatList
-        data={categorias}
+        data={categories}
         keyExtractor={item => item}
         renderItem={({item}) => <CategoryItem item={item} />}
       />

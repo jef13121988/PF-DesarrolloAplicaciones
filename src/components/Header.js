@@ -1,4 +1,4 @@
-import { Pressable, StyleSheet, Text, View,StatusBar,Platform } from 'react-native'
+import { Pressable, StyleSheet, Text, View, StatusBar, Platform } from 'react-native'
 import { colors } from '../global/colors'
 import AntDesign from '@expo/vector-icons/AntDesign'
 import { deleteSession } from '../db'
@@ -19,7 +19,7 @@ const Header = ({title}) => {
       <Text style={styles.text}>{title}</Text>
       {idToken && 
       <Pressable onPress={onLogout} style={styles.logout}>
-        <AntDesign name="logout" size={30} color="black" />
+        <AntDesign name="logout" size={30} color={colors.white1} />
       </Pressable>}
     </View>
   )
@@ -30,7 +30,7 @@ export default Header
 const styles = StyleSheet.create({
   container:{
     marginTop:Platform.OS === "android" ? StatusBar.currentHeight:0,
-    backgroundColor:colors.green2,
+    backgroundColor:colors.green1,
     width:"100%",
     height:80,
     flexDirection:"row",
@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
   },
   text:{
     fontSize:25,
-    fontFamily:'Josefin'
+    fontFamily:'Josefin',
+    color:colors.white1
   },
   icon:{
     position:"absolute",

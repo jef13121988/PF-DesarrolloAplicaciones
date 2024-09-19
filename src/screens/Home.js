@@ -1,13 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet,View} from 'react-native'
+import Categories from '../components/Categories'
 
 const Home = () => {
   return (
-    <View>
-      <Text>Home</Text>
+    <View style={styles.container}>
+      <Categories />
     </View>
   )
 }
 
 export default Home
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container:{
+    width:"100%"
+  }
+})

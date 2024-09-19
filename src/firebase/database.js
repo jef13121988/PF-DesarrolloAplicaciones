@@ -1,3 +1,5 @@
 export const URL_FIREBASE = "https://burando-e6663-default-rtdb.firebaseio.com/"
 export const API_AUTH = "AIzaSyAXas2Nm2FXxkNtIVdPjDXnR5AaJ9bYjdg"
 export const URL_AUTH = "https://identitytoolkit.googleapis.com/v1/"
+export const URL_THUMBNAIL = "https://drive.google.com/thumbnail?id="
+export const URL_IMAGE = "https://drive.google.com/uc?id="

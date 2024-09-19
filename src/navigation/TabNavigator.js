@@ -43,7 +43,7 @@ const TabNavigator = () => {
             component={OrdersStack}
             options={{
                 tabBarIcon:({focused}) => {
-                    return <TabBarIcon focused={focused} text="Ordenes" icon="list"/>
+                    return <TabBarIcon focused={focused} text="Órdenes" icon="list"/>
                 }
             }}
         />
@@ -64,7 +64,7 @@ export default TabNavigator
 
 const styles = StyleSheet.create({
     tabBar:{
-        backgroundColor:colors.green3,
+        backgroundColor:colors.green1,
         height:80
        }
 })
