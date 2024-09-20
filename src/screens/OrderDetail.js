@@ -2,9 +2,9 @@ import { Text, View, StyleSheet, FlatList } from 'react-native'
 import { useSelector } from 'react-redux'
 import { useGetOrderByUserQuery } from '../services/orders'
 import { colors } from '../global/colors'
-import OrderDetailItem from '../components/OrderDetailItem'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 import LoadingSpinner from '../components/LoadingSpinner'
+import CartItem from '../components/CartItem'
 
 
 const OrderDetail = ({route}) => {
@@ -19,7 +19,7 @@ const OrderDetail = ({route}) => {
       <FlatList
         data={order.items}
         keyExtractor={item => item.id}
-        renderItem={({item})=> <OrderDetailItem item={item}/> }
+        renderItem={({item})=> <CartItem item={item} isCart={false}/> }
       />
       <Text style={styles.total}>Total: <FontAwesome6 name="coins" size={20} color="yellow" /> {order.total}</Text>
     </View>

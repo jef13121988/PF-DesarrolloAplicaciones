@@ -36,7 +36,7 @@ const Cart = ({navigation}) => {
       <FlatList
         data={cart.items}
         keyExtractor={item => item.id}
-        renderItem={({item})=> <CartItem item={item}/> }
+        renderItem={({item})=> <CartItem item={item} isCart={true}/> }
       />
       <Text style={styles.total}>Total: <FontAwesome6 name="coins" size={20} color="yellow" /> {cart.total}</Text>
       <View style={styles.buttonContainer}>
