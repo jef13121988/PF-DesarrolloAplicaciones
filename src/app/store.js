@@ -9,15 +9,15 @@ import { usersApi } from '../services/users'
 
 export const store = configureStore({
   reducer: {
-    cart:cartReducer,
-    auth:authReducer,
-    [authApi.reducerPath]: authApi.reducer,
-    [shopApi.reducerPath]: shopApi.reducer,
-    [ordersApi.reducerPath]: ordersApi.reducer,
-    [usersApi.reducerPath]:usersApi.reducer
+    cart: cartReducer,
+    auth: authReducer,
+    [ authApi.reducerPath ]: authApi.reducer,
+    [ shopApi.reducerPath ]: shopApi.reducer,
+    [ ordersApi.reducerPath ]: ordersApi.reducer,
+    [ usersApi.reducerPath ]: usersApi.reducer
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(shopApi.middleware,authApi.middleware,ordersApi.middleware,usersApi.middleware),
+  middleware: ( getDefaultMiddleware ) =>
+    getDefaultMiddleware().concat( shopApi.middleware, authApi.middleware, ordersApi.middleware, usersApi.middleware ),
 })
 
-setupListeners(store.dispatch)
+setupListeners( store.dispatch )

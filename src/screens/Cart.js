@@ -28,9 +28,7 @@ const Cart = ({navigation}) => {
     dispatch(clearCart())
   }
 
-  console.log(cart.items)
-
-  if(cart.total === 0) return <View style={styles.emptyContainer}><Text style={styles.emptyText}>Vacío</Text></View>
+  if(cart.total === 0) return <View style={styles.emptyContainer}><Text style={styles.emptyText}>No se han agregado productos al carrito</Text></View>
   return (
     <View style={styles.container}>
       <FlatList
@@ -105,6 +103,7 @@ const styles = StyleSheet.create({
   },
   emptyText:{
     fontSize:16,
+    fontWeight:"bold",
     color:colors.white1,
     width:"90%",
     marginHorizontal:"5%",
@@ -112,6 +111,8 @@ const styles = StyleSheet.create({
     marginVertical:7,
     padding:20,
     textAlign:"center",
-    borderRadius:3 
+    borderRadius:20,
+    borderColor:colors.green3,
+    borderWidth:3
   }
 })

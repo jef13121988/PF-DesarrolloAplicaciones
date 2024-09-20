@@ -14,7 +14,7 @@ const Orders = () => {
 
   if(isLoading) return <LoadingSpinner/>
 
-  if(orders.length === 0) return <View style={styles.emptyContainer}><Text style={styles.emptyText}>Vacío</Text></View>
+  if(orders.length === 0) return <View style={styles.emptyContainer}><Text style={styles.emptyText}>No se han agregado órdenes</Text></View>
   return (
     <View style={styles.container}>
       <FlatList
@@ -30,9 +30,9 @@ export default Orders
 
 const styles = StyleSheet.create({
   container:{
-      justifyContent:"space-between",
-      flex:1,
-      backgroundColor:colors.black1
+    justifyContent:"space-between",
+    flex:1,
+    backgroundColor:colors.black1
   },
   emptyContainer:{
     flex:1,
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
   },
   emptyText:{
     fontSize:16,
+    fontWeight:"bold",
     color:colors.white1,
     width:"90%",
     marginHorizontal:"5%",
@@ -48,6 +49,8 @@ const styles = StyleSheet.create({
     marginVertical:7,
     padding:20,
     textAlign:"center",
-    borderRadius:3 
+    borderRadius:20,
+    borderColor:colors.green3,
+    borderWidth:3
   }
 })

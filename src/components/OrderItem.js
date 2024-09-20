@@ -25,28 +25,29 @@ const OrderItem = ({item}) => {
 export default OrderItem
 
 const styles = StyleSheet.create({
-    container:{
-        borderColor:colors.green3,
-        borderWidth:2,
-        width:"90%",
-        marginHorizontal:"5%",
-        marginVertical:10,
-        padding:20,
-        flexDirection:"row",
-        justifyContent:"space-between",
-        alignItems:"center",
-        borderRadius:3
-    },
-    containerText:{
-        gap:20
-    },
-    date:{
-      color:colors.white1,
-        fontSize:16
-    },
-    total:{
-        color:colors.white1,
-        fontSize:20,
-        fontWeight:"bold"
-    }
+  container:{
+      backgroundColor:colors.green1,
+      width:"90%",
+      marginHorizontal:"5%",
+      marginVertical:10,
+      padding:20,
+      flexDirection:"row",
+      justifyContent:"space-between",
+      alignItems:"center",
+      borderRadius:20,
+      borderColor:colors.green2,
+      borderWidth:3
+  },
+  containerText:{
+    gap:20
+  },
+  date:{
+    color:colors.white1,
+      fontSize:16
+  },
+  total:{
+    color:colors.white1,
+    fontSize:20,
+    fontWeight:"bold"
+  }
 })

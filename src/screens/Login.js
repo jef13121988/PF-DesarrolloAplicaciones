@@ -39,7 +39,6 @@ const Login = ({navigation}) => {
             localId:data.localId
           }))
         } catch (error) {
-          console.log(error)
           switch(error.path){
             case "email":
               setErrorEmail(error.message)
@@ -86,32 +85,33 @@ const Login = ({navigation}) => {
 export default Login
 
 const styles = StyleSheet.create({
-    main:{
-        flex:1,
-        justifyContent:"center",
-        alignItems:"center",
-        backgroundColor:colors.black1
-      },
-      container:{
-        width:"90%",
-        backgroundColor:colors.green1,
-        gap:15,
-        borderRadius:10,
-        justifyContent:"center",
-        alignItems:"center",
-        paddingVertical:20
-      },
-      title:{
-        fontSize:22,
-        fontFamily:"Lobster"
-      },
-      sub:{
-        fontSize:14,
-        fontFamily:"Josefin"
-      },
-      subLink:{
-        fontSize:14,
-        fontFamily:"Josefin",
-        color:"blue"
-      }
+  main:{
+    flex:1,
+    justifyContent:"center",
+    alignItems:"center",
+    backgroundColor:colors.black1
+  },
+  container:{
+    width:"90%",
+    gap:15,
+    borderRadius:10,
+    justifyContent:"center",
+    alignItems:"center",
+    paddingVertical:20
+  },
+  title:{
+    fontSize:22,
+    fontFamily:"Lobster",
+    color:colors.white1
+  },
+  sub:{
+    fontSize:14,
+    fontFamily:"Josefin",
+    color:colors.white1
+  },
+  subLink:{
+    fontSize:14,
+    fontFamily:"Josefin",
+    color:colors.orange
+  }
 })

@@ -1,10 +1,19 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import Entypo from '@expo/vector-icons/Entypo'
 import { colors } from '../global/colors'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 import { URL_THUMBNAIL } from '../firebase/database'
+import { removeItemCart } from '../features/cart/cartSlice'
+import { useDispatch } from 'react-redux'
 
 const CartItem = ({item,isCart}) => {
+
+  const dispatch = useDispatch()
+
+  const handleRemoveItemCart = () => {
+    dispatch(removeItemCart(item))
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.containerText}>
@@ -18,7 +27,9 @@ const CartItem = ({item,isCart}) => {
         <Text style={styles.totalPrice}>Subtotal: <FontAwesome6 name="coins" size={20} color="yellow" /> {item.precio * item.quantity}</Text>
       </View>
       { isCart ? 
-        <Entypo name="trash" size={48} color={colors.red2} />
+        <Pressable onPress={handleRemoveItemCart}>
+          <Entypo name="trash" size={48} color={colors.red2} />
+        </Pressable>
       :
         <Image
           style={styles.image}
