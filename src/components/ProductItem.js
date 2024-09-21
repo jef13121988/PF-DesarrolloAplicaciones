@@ -9,7 +9,7 @@ const ProductItem = ({product}) => {
   const navigation = useNavigation()
 
   return (
-    <Pressable style={styles.container} onPress={()=>navigation.navigate("Detail",{id:product.id})}>
+    <Pressable style={styles.container} onPress={ () => navigation.navigate( "Detail" , { id: product.id } ) }>
       <Text style={[styles.title,width < 300 ? styles.titleMin: styles.titleMax]}>{product.nombre}</Text>
       <Image
         style={styles.image}

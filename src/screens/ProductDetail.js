@@ -32,11 +32,13 @@ const ProductDetail = ({route}) => {
 
   return (
     <ScrollView style={styles.container}>
-      <Image
-        style={styles.image}
-        resizeMode='contain'
-        source={{uri:URL_THUMBNAIL+product.imagen}}
-      />
+      <Pressable onPress={ () => navigation.navigate( "Image" , { image: product.imagen } ) }>
+        <Image
+          style={styles.image}
+          resizeMode='contain'
+          source={{uri:URL_THUMBNAIL+product.imagen}}
+        />
+      </Pressable>
       <View style={styles.containerText}>
         <Text style={styles.title}>{product.nombre}</Text>
         <Text style={styles.characteristic}><B>Características:</B> otorga {product.valor} de {product.cualidad}.</Text>

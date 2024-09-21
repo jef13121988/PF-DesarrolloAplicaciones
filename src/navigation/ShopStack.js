@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Home from '../screens/Home'
 import ProductListCategory from '../screens/ProductListCategory'
 import ProductDetail from '../screens/ProductDetail'
+import ProductImage from '../screens/ProductImage'
 import Header from '../components/Header'
 
 const Stack = createNativeStackNavigator()
@@ -18,7 +19,10 @@ const ShopStack = () => {
                             route.name === "Products" ?
                                 route.params.category
                             :
-                                "Detalle del Producto"
+                                route.name === "Detail" ?
+                                    "Detalle del Producto"
+                                :
+                                    "Imagen"
                     } />
                 }
             }
@@ -27,6 +31,7 @@ const ShopStack = () => {
         <Stack.Screen name='Home' component={Home}/>
         <Stack.Screen name='Products' component={ProductListCategory}/>
         <Stack.Screen name='Detail' component={ProductDetail}/>
+        <Stack.Screen name='Image' component={ProductImage}/>
     </Stack.Navigator>
   )
 }
