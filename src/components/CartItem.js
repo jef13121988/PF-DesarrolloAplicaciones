@@ -5,6 +5,7 @@ import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 import { URL_THUMBNAIL } from '../firebase/database'
 import { removeItemCart } from '../features/cart/cartSlice'
 import { useDispatch } from 'react-redux'
+import CartCounter from './CartCounter'
 
 const CartItem = ({item,isCart}) => {
 
@@ -20,11 +21,11 @@ const CartItem = ({item,isCart}) => {
         <Text style={styles.title}>{item.nombre}</Text>
         <Text style={styles.text}>Precio: <FontAwesome6 name="coins" size={20} color="yellow" /> {item.precio}</Text>
         { isCart ? 
-          <Text style={styles.text}>Cantidad: - {item.quantity} +</Text>
+          <CartCounter product={item}/>
         :
-        <Text style={styles.text}>Cantidad: {item.quantity}</Text>
+          <Text style={styles.text}>Cantidad: {item.cantidad}</Text>
         }
-        <Text style={styles.totalPrice}>Subtotal: <FontAwesome6 name="coins" size={20} color="yellow" /> {item.precio * item.quantity}</Text>
+        <Text style={styles.totalPrice}>Subtotal: <FontAwesome6 name="coins" size={20} color="yellow" /> {item.precio * item.cantidad}</Text>
       </View>
       { isCart ? 
         <Pressable onPress={handleRemoveItemCart}>
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
     flexDirection:"row",
     alignItems:"center",
     justifyContent:"space-between",
-    borderRadius:3
+    borderRadius:35
   },
   containerText:{
     width:"70%",

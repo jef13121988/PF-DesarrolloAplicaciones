@@ -4,12 +4,14 @@ import { shopApi } from '../services/shop'
 import { authApi } from '../services/auth'
 import cartReducer from '../features/cart/cartSlice'
 import authReducer from '../features/auth/authSlice'
+import counterReducer from '../features/counter/counterSlice'
 import { ordersApi } from '../services/orders'
 import { usersApi } from '../services/users'
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
+    counter: counterReducer,
     auth: authReducer,
     [ authApi.reducerPath ]: authApi.reducer,
     [ shopApi.reducerPath ]: shopApi.reducer,

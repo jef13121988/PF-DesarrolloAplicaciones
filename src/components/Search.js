@@ -1,9 +1,8 @@
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { colors } from '../global/colors'
 import AntDesign from '@expo/vector-icons/AntDesign'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-
 
 const Search = ({onSearch}) => {
 

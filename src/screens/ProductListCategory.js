@@ -7,7 +7,7 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import { colors } from '../global/colors'
 
 
-const ItemListCategory = ({route}) => {
+const ProductListCategory = ({route}) => {
 
   const {category} = route.params
   const {data:products,isSuccess,isLoading,isError,error} = useGetProductsQuery(category)
@@ -22,7 +22,7 @@ const ItemListCategory = ({route}) => {
   const onSearch = (input) => {
 
     if(input){
-      setProductsFiltered(productsFiltered.filter(product => product.title.includes(input) ))
+      setProductsFiltered(products.filter(product => product.nombre.toLowerCase().includes(input.toLowerCase()) ))
     }else{
       setProductsFiltered(products)
     }
@@ -44,7 +44,7 @@ const ItemListCategory = ({route}) => {
   )
 }
 
-export default ItemListCategory
+export default ProductListCategory
 
 const styles = StyleSheet.create({
   container:{
