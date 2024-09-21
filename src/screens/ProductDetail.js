@@ -1,42 +1,40 @@
-import { Image, Pressable, StyleSheet, ScrollView, Text, View} from 'react-native'
+import { Image, Pressable, StyleSheet, ScrollView, Text, View } from 'react-native'
 import { colors } from '../global/colors'
 import { addItemCart } from '../features/cart/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import { useGetProductQuery } from '../services/shop'
 import LoadingSpinner from '../components/LoadingSpinner'
-import { URL_IMAGE, URL_THUMBNAIL } from '../firebase/database'
+import { URL_THUMBNAIL } from '../firebase/database'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 import ProductCounter from '../components/ProductCounter'
 import { resetQuantity } from '../features/counter/counterSlice'
 
-const ProductDetail = ({route}) => {
+const ProductDetail = ({ route }) => {
 
-  const {id} = route.params
-  const {data:product,isLoading} = useGetProductQuery(id)
+  const { id } = route.params
+  const { data: product, isLoading } = useGetProductQuery( id )
   const navigation = useNavigation()
   const counter = useSelector( state => state.counter )
-
   const dispatch = useDispatch()
 
-
-  const B = (props) => <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
+  const B = ( props ) => <Text style={{ fontWeight: 'bold' }}>{props.children}</Text>
 
   const handleAddItemCart = () => {
-    dispatch(addItemCart({...product,cantidad:counter.quantity}))
+    dispatch( addItemCart({ ...product, cantidad: counter.quantity }) )
     dispatch( resetQuantity() )
-    navigation.navigate("CartStack")
+    navigation.navigate( "CartStack" )
   }
 
-  if(isLoading) return <LoadingSpinner/>
+  if( isLoading ) return <LoadingSpinner/>
 
   return (
     <ScrollView style={styles.container}>
-      <Pressable onPress={ () => navigation.navigate( "Image" , { image: product.imagen } ) }>
+      <Pressable onPress={ () => navigation.navigate( "Image", { image: product.imagen } ) }>
         <Image
           style={styles.image}
           resizeMode='contain'
-          source={{uri:URL_THUMBNAIL+product.imagen}}
+          source={{ uri: URL_THUMBNAIL + product.imagen }}
         />
       </Pressable>
       <View style={styles.containerText}>
@@ -44,7 +42,7 @@ const ProductDetail = ({route}) => {
         <Text style={styles.characteristic}><B>Características:</B> otorga {product.valor} de {product.cualidad}.</Text>
         <Text style={styles.description}><B>Descripción:</B>{"\n"}{product.descripcion}</Text>
         <Text style={styles.price}><B>Precio:</B> <FontAwesome6 name="coins" size={20} color="yellow" /> {product.precio}</Text>
-        <ProductCounter product={product}/>
+        <ProductCounter product={product} />
       </View>
       
       <Pressable style={styles.button} onPress={handleAddItemCart}>
@@ -52,6 +50,7 @@ const ProductDetail = ({route}) => {
       </Pressable>
     </ScrollView>
   )
+
 }
 
 export default ProductDetail
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
     marginBottom:10
   },
   buttonText:{
-    color:"white",
+    color:colors.white1,
     fontWeight:"bold",
     fontSize:20
   }

@@ -1,13 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    quantity:1
+    quantity: 1
 }
 
 export const counterSlice = createSlice({
     name:"counter",
     initialState,
     reducers:{
+        
         increaseQuantity: ( state ) => {
             state.quantity += 1
         },

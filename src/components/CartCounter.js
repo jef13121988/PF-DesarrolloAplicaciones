@@ -8,7 +8,6 @@ import { useDispatch } from 'react-redux'
 const CartCounter = ({ product }) => {
 
     const [ disableButton, setDisableButton ] = useState( false )
-
     const dispatch = useDispatch()
 
     const handleIncrementItemCart = () => {
@@ -30,7 +29,7 @@ const CartCounter = ({ product }) => {
   return (
     <View style={styles.container}>
         <Text style={styles.text}>Cantidad:</Text>
-        <Pressable onPress={handleDecrementItemCart} style={[ styles.button, disableButton && styles.disabledButton ]} disabled={disableButton}>
+        <Pressable onPress={handleDecrementItemCart} style={ [ styles.button, disableButton && styles.disabledButton ] } disabled={disableButton}>
             <Text style={styles.buttonText}>-</Text>
         </Pressable>
         <Text style={styles.text}>{product.cantidad}</Text>
@@ -39,6 +38,7 @@ const CartCounter = ({ product }) => {
         </Pressable>
     </View>
   )
+  
 }
 
 export default CartCounter

@@ -5,19 +5,21 @@ import Cart from '../screens/Cart'
 const Stack = createNativeStackNavigator()
 
 const CartStack = () => {
+
   return (
     <Stack.Navigator
       screenOptions={(
           () => {
               return {
-                  header: () => <Header title="Carrito"/>
+                  header: () => <Header title="Carrito" />
               }
           }
       )}
     >
-      <Stack.Screen name='Cart' component={Cart}/>
+      <Stack.Screen name='Cart' component={Cart} />
     </Stack.Navigator>
   )
+
 }
 
 export default CartStack

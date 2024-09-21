@@ -4,25 +4,27 @@ import { useGetCategoriesQuery } from '../services/shop'
 import LoadingSpinner from './LoadingSpinner'
 import { colors } from '../global/colors'
 
-
 const Categories = () => {
-  const {data:categories,isLoading} = useGetCategoriesQuery()
 
-  if(isLoading) return <LoadingSpinner/>
+  const { data: categories, isLoading } = useGetCategoriesQuery()
+
+  if( isLoading ) return <LoadingSpinner/>
+  
   return (
       <FlatList
         data={categories}
-        keyExtractor={item => item}
-        renderItem={({item}) => <CategoryItem item={item} />}
+        keyExtractor={ item => item }
+        renderItem={ ( { item } ) => <CategoryItem item={item} /> }
         style={styles.container}
       />
   )
+  
 }
 
 export default Categories
 
 const styles = StyleSheet.create({
   container:{
-      backgroundColor:colors.black1
+    backgroundColor:colors.black1
   }
 })

@@ -5,24 +5,26 @@ import { deleteSession } from '../db'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearUser } from '../features/auth/authSlice'
 
-const Header = ({title}) => {
+const Header = ({ title }) => {
 
+  const idToken = useSelector( state => state.auth.idToken )
   const dispatch = useDispatch()
-  const idToken = useSelector(state => state.auth.idToken)
 
-  const onLogout = () =>{
+  const onLogout = () => {
     deleteSession()
-    dispatch(clearUser())
+    dispatch( clearUser() )
   }
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{title}</Text>
-      {idToken && 
+      { idToken && 
       <Pressable onPress={onLogout} style={styles.logout}>
         <AntDesign name="logout" size={30} color={colors.white1} />
-      </Pressable>}
+      </Pressable> }
     </View>
   )
+  
 }
 
 export default Header
@@ -52,5 +54,4 @@ const styles = StyleSheet.create({
     right:10,
     bottom:20
   }
-
 })

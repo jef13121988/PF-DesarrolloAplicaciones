@@ -1,29 +1,22 @@
-import { Image, useWindowDimensions, StyleSheet, ScrollView } from 'react-native'
+import { Image, useWindowDimensions, StyleSheet, View } from 'react-native'
 import { colors } from '../global/colors'
-import { addItemCart } from '../features/cart/cartSlice'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigation } from '@react-navigation/native'
-import { useGetProductQuery } from '../services/shop'
-import LoadingSpinner from '../components/LoadingSpinner'
 import { URL_IMAGE } from '../firebase/database'
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
-import ProductCounter from '../components/ProductCounter'
-import { resetQuantity } from '../features/counter/counterSlice'
 
-const ProductImage = ({route}) => {
+const ProductImage = ({ route }) => {
 
   const { image } = route.params
-  const {width, height} = useWindowDimensions()
+  const { width } = useWindowDimensions()
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <Image
-        style={[styles.image,{height: width-20}]}
+        style={ [ styles.image, { height: width - 20 } ] }
         resizeMode='contain'
-        source={{uri:URL_IMAGE+image}}
+        source={{ uri: URL_IMAGE + image }}
       />
-    </ScrollView>
+    </View>
   )
+
 }
 
 export default ProductImage

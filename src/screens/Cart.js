@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,FlatList, Pressable } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Pressable } from 'react-native'
 import CartItem from '../components/CartItem'
 import { colors } from '../global/colors'
 import { useDispatch, useSelector } from 'react-redux'
@@ -6,11 +6,11 @@ import { usePostOrderMutation } from '../services/orders'
 import { clearCart } from '../features/cart/cartSlice'
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6'
 
-const Cart = ({navigation}) => {
+const Cart = ({ navigation }) => {
 
-  const cart = useSelector(state => state.cart)
-  const localId = useSelector(state => state.auth.localId)
-  const [triggerPostOrder] = usePostOrderMutation()
+  const cart = useSelector( state => state.cart )
+  const localId = useSelector( state => state.auth.localId )
+  const [ triggerPostOrder ] = usePostOrderMutation()
   const dispatch = useDispatch()
 
   const handleAddOrder = () => {
@@ -19,22 +19,23 @@ const Cart = ({navigation}) => {
       ...cart,
       createdAt
     }
-    triggerPostOrder({localId,order})
-    dispatch(clearCart())
-    navigation.navigate("OrdersStack")
+    triggerPostOrder({ localId, order })
+    dispatch( clearCart() )
+    navigation.navigate( "OrdersStack" )
   }
 
   const handleClearCart = () => {
-    dispatch(clearCart())
+    dispatch( clearCart() )
   }
 
-  if(cart.total === 0) return <View style={styles.emptyContainer}><Text style={styles.emptyText}>No se han agregado productos al carrito</Text></View>
+  if( cart.total === 0 ) return <View style={styles.emptyContainer}><Text style={styles.emptyText}>No se han agregado productos al carrito</Text></View>
+
   return (
     <View style={styles.container}>
       <FlatList
         data={cart.items}
-        keyExtractor={item => item.id}
-        renderItem={({item})=> <CartItem item={item} isCart={true}/> }
+        keyExtractor={ item => item.id }
+        renderItem={ ({ item }) => <CartItem item={item} isCart={true} /> }
       />
       <Text style={styles.total}>Total: <FontAwesome6 name="coins" size={20} color="yellow" /> {cart.total}</Text>
       <View style={styles.buttonContainer}>
@@ -47,6 +48,7 @@ const Cart = ({navigation}) => {
       </View>
     </View>
   )
+  
 }
 
 export default Cart

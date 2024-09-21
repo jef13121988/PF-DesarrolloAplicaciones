@@ -4,13 +4,13 @@ import { colors } from '../global/colors'
 import AntDesign from '@expo/vector-icons/AntDesign'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 
-const Search = ({onSearch}) => {
+const Search = ({ onSearch }) => {
 
-    const [input,setInput] = useState("")
-    const [error,setError] = useState("")
+    const [ input, setInput ] = useState("")
+    const [ error, setError ] = useState("")
 
-    const handleInputChange = (t) => {
-        setInput(t)
+    const handleInputChange = ( t ) => {
+        setInput( t )
     }
 
     const handleRemoveInput = () => {
@@ -22,37 +22,39 @@ const Search = ({onSearch}) => {
     const search = () => {
 
         const regex = /[^a-zA-Z0-9 ]/
-        if(regex.test(input)){
+
+        if( regex.test( input ) ){
             setError("Caracteres no válidos")
-        }else{
+        } else {
             setError("")
-            onSearch(input)
+            onSearch( input )
         }
 
     }
 
-  return (
-    <View style={styles.container}>
-        <View style={styles.containerInput}>
-            <TextInput 
-                style={styles.input}
-                placeholderTextColor={colors.white1}
-                placeholder='Buscar producto'
-                value={input}
-                onChangeText={handleInputChange}
-            />
-            <View style={styles.buttonContainer}>
-                <Pressable onPress={search}>
-                    <AntDesign name="search1" size={28} color={colors.white1} />
-                </Pressable>
-                <Pressable onPress={handleRemoveInput}>
-                    <MaterialIcons name="cancel" size={28} color={colors.white1} />
-                </Pressable>
-            </View>  
+    return (
+        <View style={styles.container}>
+            <View style={styles.containerInput}>
+                <TextInput 
+                    style={styles.input}
+                    placeholderTextColor={colors.white1}
+                    placeholder='Buscar producto'
+                    value={input}
+                    onChangeText={handleInputChange}
+                />
+                <View style={styles.buttonContainer}>
+                    <Pressable onPress={search}>
+                        <AntDesign name="search1" size={28} color={colors.white1} />
+                    </Pressable>
+                    <Pressable onPress={handleRemoveInput}>
+                        <MaterialIcons name="cancel" size={28} color={colors.white1} />
+                    </Pressable>
+                </View>  
+            </View>
+            <Text style={styles.error}>{error}</Text>
         </View>
-        <Text style={styles.error}>{error}</Text>
-    </View>
-  )
+    )
+    
 }
 
 export default Search

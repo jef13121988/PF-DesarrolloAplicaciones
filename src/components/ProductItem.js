@@ -1,23 +1,24 @@
-import { Image, Pressable, StyleSheet, Text, useWindowDimensions} from 'react-native'
+import { Image, Pressable, StyleSheet, Text, useWindowDimensions } from 'react-native'
 import { colors } from '../global/colors'
 import { useNavigation } from '@react-navigation/native'
-import { URL_IMAGE, URL_THUMBNAIL } from '../firebase/database'
+import { URL_THUMBNAIL } from '../firebase/database'
 
-const ProductItem = ({product}) => {
+const ProductItem = ({ product }) => {
 
-  const {width, height} = useWindowDimensions()
+  const { width } = useWindowDimensions()
   const navigation = useNavigation()
 
   return (
-    <Pressable style={styles.container} onPress={ () => navigation.navigate( "Detail" , { id: product.id } ) }>
-      <Text style={[styles.title,width < 300 ? styles.titleMin: styles.titleMax]}>{product.nombre}</Text>
+    <Pressable style={styles.container} onPress={ () => navigation.navigate( "Detail", { id: product.id } ) }>
+      <Text style={ [ styles.title,width < 300 ? styles.titleMin : styles.titleMax ] }>{product.nombre}</Text>
       <Image
         style={styles.image}
         resizeMode='cover'
-        source={{uri:URL_THUMBNAIL+product.imagen}}
+        source={{ uri: URL_THUMBNAIL + product.imagen }}
       />
     </Pressable>
   )
+
 }
 
 export default ProductItem

@@ -7,41 +7,42 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import { colors } from '../global/colors'
 
 
-const ProductListCategory = ({route}) => {
+const ProductListCategory = ({ route }) => {
 
-  const {category} = route.params
-  const {data:products,isSuccess,isLoading,isError,error} = useGetProductsQuery(category)
-  const [productsFiltered,setProductsFiltered] = useState([])
+  const { category } = route.params
+  const { data: products, isSuccess, isLoading, isError, error } = useGetProductsQuery( category )
+  const [ productsFiltered, setProductsFiltered ] = useState( [] )
 
-  useEffect(()=>{
-    if(isSuccess){
-      setProductsFiltered(products)
+  useEffect( () => {
+    if( isSuccess ) {
+      setProductsFiltered( products )
     }
-  },[category,isSuccess])
+  },[ category, isSuccess ])
 
-  const onSearch = (input) => {
+  const onSearch = ( input ) => {
 
-    if(input){
-      setProductsFiltered(products.filter(product => product.nombre.toLowerCase().includes(input.toLowerCase()) ))
+    if( input ) {
+      setProductsFiltered( products.filter( product => product.nombre.toLowerCase().includes( input.toLowerCase() ) ) )
     }else{
-      setProductsFiltered(products)
+      setProductsFiltered( products )
     }
    
   }
 
-  if(isLoading) return <LoadingSpinner/>
-  if(isError) return <View><Text>{error.message}</Text></View>
+  if( isLoading ) return <LoadingSpinner/>
+  if( isError ) return <View><Text>{error.message}</Text></View>
 
   return (
     <View style={styles.container}>
-        <Search onSearch={onSearch}/>
-        <FlatList
-          data={productsFiltered}
-          keyExtractor={item=>item.id}
-          renderItem={({item})=> <ProductItem product={item}/>}
-        />
+      <Search onSearch={onSearch} />
+      <FlatList
+        data={productsFiltered}
+        keyExtractor={ item => item.id }
+        renderItem={ ({ item }) => <ProductItem product={item} /> }
+      />
     </View>
   )
+
 }
 
 export default ProductListCategory

@@ -6,20 +6,22 @@ import ImageSelector from '../screens/ImageSelector'
 const Stack = createNativeStackNavigator()
 
 const ProfileStack = () => {
-  return (
-    <Stack.Navigator
+    
+    return (
+        <Stack.Navigator
             screenOptions={(
                 () => {
                     return {
-                        header: () => <Header title="Perfil"/>
+                        header: () => <Header title="Perfil" />
                     }
                 }
             )}
         >
-            <Stack.Screen name='Profile' component={Profile}/>
-            <Stack.Screen name='ImageSelector' component={ImageSelector}/>
+            <Stack.Screen name='Profile' component={Profile} />
+            <Stack.Screen name='ImageSelector' component={ImageSelector} />
         </Stack.Navigator>
-  )
+    )
+
 }
 
 export default ProfileStack

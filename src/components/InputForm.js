@@ -2,9 +2,9 @@ import { StyleSheet, Text, View, TextInput } from 'react-native'
 import { colors } from '../global/colors'
 import { useState } from 'react'
 
-const InputForm = ({label,value,onChangeText,isSecure,error}) => {
+const InputForm = ({ label, value, onChangeText, isSecure, error }) => {
 
-  const [focus, setFocus] = useState(false);
+  const [ focus, setFocus ] = useState( false );
 
   return (
     <View style={styles.inputContainer}>
@@ -13,11 +13,11 @@ const InputForm = ({label,value,onChangeText,isSecure,error}) => {
           value={value}  
           onChangeText={onChangeText} 
           secureTextEntry={isSecure}
-          style={focus ? styles.inputOnFocus : styles.inputOnBlur}
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
+          style={ focus ? styles.inputOnFocus : styles.inputOnBlur }
+          onFocus={ () => setFocus( true ) }
+          onBlur={ () => setFocus( false ) }
         />
-        <View><Text style={styles.error}>{error ? error : ""} </Text></View>
+        <View><Text style={styles.error}>{ error ? error : " " }</Text></View>
     </View>
   )
 }

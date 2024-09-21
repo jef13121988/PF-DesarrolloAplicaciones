@@ -10,54 +10,54 @@ import ProfileStack from './ProfileStack'
 const Tab = createBottomTabNavigator()
 
 const TabNavigator = () => {
-  return (
-    <Tab.Navigator 
-        screenOptions={{
-            headerShown:false,
-            tabBarShowLabel:false,
-            tabBarStyle:styles.tabBar
-        }}
-    >
-        <Tab.Screen 
-            name='HomeStack' 
-            component={ShopStack}
-            options={{
-                tabBarIcon:({focused}) => {
-                    return <TabBarIcon focused={focused} text="Shop" icon="shop"/>
-                }
-                
+
+    return (
+        <Tab.Navigator 
+            screenOptions={{
+                headerShown: false,
+                tabBarShowLabel: false,
+                tabBarStyle: styles.tabBar
             }}
-        />
-        <Tab.Screen 
-            name='CartStack' 
-            component={CartStack}
-            options={{
-                tabBarIcon:({focused}) => {
-                    return <TabBarIcon focused={focused} text="Carrito" icon="shopping-cart"/>
-                }
-                
-            }}
-        />
-        <Tab.Screen
-            name='OrdersStack' 
-            component={OrdersStack}
-            options={{
-                tabBarIcon:({focused}) => {
-                    return <TabBarIcon focused={focused} text="Órdenes" icon="list"/>
-                }
-            }}
-        />
-          <Tab.Screen
-            name='ProfileStack' 
-            component={ProfileStack}
-            options={{
-                tabBarIcon:({focused}) => {
-                    return <TabBarIcon focused={focused} text="Perfil" icon="user"/>
-                }
-            }}
-        />
-    </Tab.Navigator>
-  )
+        >
+            <Tab.Screen 
+                name='HomeStack' 
+                component={ShopStack}
+                options={{
+                    tabBarIcon:({ focused }) => {
+                        return <TabBarIcon focused={focused} text="Shop" icon="shop" />
+                    }
+                }}
+            />
+            <Tab.Screen 
+                name='CartStack' 
+                component={CartStack}
+                options={{
+                    tabBarIcon:({ focused }) => {
+                        return <TabBarIcon focused={focused} text="Carrito" icon="shopping-cart" />
+                    }
+                }}
+            />
+            <Tab.Screen
+                name='OrdersStack' 
+                component={OrdersStack}
+                options={{
+                    tabBarIcon:({ focused }) => {
+                        return <TabBarIcon focused={focused} text="Órdenes" icon="list" />
+                    }
+                }}
+            />
+            <Tab.Screen
+                name='ProfileStack' 
+                component={ProfileStack}
+                options={{
+                    tabBarIcon:({ focused }) => {
+                        return <TabBarIcon focused={focused} text="Perfil" icon="user" />
+                    }
+                }}
+            />
+        </Tab.Navigator>
+    )
+
 }
 
 export default TabNavigator

@@ -7,23 +7,25 @@ import LoadingSpinner from '../components/LoadingSpinner'
 import CartItem from '../components/CartItem'
 
 
-const OrderDetail = ({route}) => {
+const OrderDetail = ({ route }) => {
 
-  const {id} = route.params
-  const localId = useSelector(state => state.auth.localId)
-  const {data:order,isLoading} = useGetOrderByUserQuery({localId,orderId:id})
+  const { id } = route.params
+  const localId = useSelector( state => state.auth.localId )
+  const { data: order, isLoading } = useGetOrderByUserQuery({ localId, orderId: id })
 
-  if(isLoading) return <LoadingSpinner/>
+  if( isLoading ) return <LoadingSpinner/>
+
   return (
     <View style={styles.container}>
       <FlatList
         data={order.items}
-        keyExtractor={item => item.id}
-        renderItem={({item})=> <CartItem item={item} isCart={false}/> }
+        keyExtractor={ item => item.id }
+        renderItem={ ({ item }) => <CartItem item={item} isCart={false} /> }
       />
       <Text style={styles.total}>Total: <FontAwesome6 name="coins" size={20} color="yellow" /> {order.total}</Text>
     </View>
   )
+
 }
 
 export default OrderDetail

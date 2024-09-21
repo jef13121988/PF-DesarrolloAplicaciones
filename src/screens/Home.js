@@ -1,12 +1,14 @@
-import { StyleSheet,View} from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import Categories from '../components/Categories'
 
 const Home = () => {
+
   return (
     <View style={styles.container}>
-      <Categories />
+      <Categories/>
     </View>
   )
+
 }
 
 export default Home

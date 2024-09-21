@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    items:[],
-    total:0
+    items: [],
+    total: 0
 }
 
 export const cartSlice = createSlice({
@@ -13,12 +13,16 @@ export const cartSlice = createSlice({
         addItemCart: ( state, action ) => {
             const newItem = action.payload
             const itemFound = state.items.find( item => item.id === newItem.id)
+
             state.total += newItem.precio * newItem.cantidad
+
             if( itemFound ) {
                 newItem.cantidad += itemFound.cantidad
                 state.items = state.items.filter( item =>  item.id !== newItem.id )
             }
+
             state.items.push( newItem )
+            
         },
 
         removeItemCart: ( state, action ) => {

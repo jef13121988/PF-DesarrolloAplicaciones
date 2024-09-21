@@ -7,12 +7,12 @@ import { removeItemCart } from '../features/cart/cartSlice'
 import { useDispatch } from 'react-redux'
 import CartCounter from './CartCounter'
 
-const CartItem = ({item,isCart}) => {
+const CartItem = ({ item, isCart }) => {
 
   const dispatch = useDispatch()
 
   const handleRemoveItemCart = () => {
-    dispatch(removeItemCart(item))
+    dispatch( removeItemCart( item ) )
   }
 
   return (
@@ -21,11 +21,11 @@ const CartItem = ({item,isCart}) => {
         <Text style={styles.title}>{item.nombre}</Text>
         <Text style={styles.text}>Precio: <FontAwesome6 name="coins" size={20} color="yellow" /> {item.precio}</Text>
         { isCart ? 
-          <CartCounter product={item}/>
+          <CartCounter product={item} />
         :
           <Text style={styles.text}>Cantidad: {item.cantidad}</Text>
         }
-        <Text style={styles.totalPrice}>Subtotal: <FontAwesome6 name="coins" size={20} color="yellow" /> {item.precio * item.cantidad}</Text>
+        <Text style={styles.totalPrice}>Subtotal: <FontAwesome6 name="coins" size={20} color="yellow" /> { item.precio * item.cantidad }</Text>
       </View>
       { isCart ? 
         <Pressable onPress={handleRemoveItemCart}>
@@ -35,11 +35,12 @@ const CartItem = ({item,isCart}) => {
         <Image
           style={styles.image}
           resizeMode='cover'
-          source={{uri:URL_THUMBNAIL+item.imagen}}
+          source={{ uri: URL_THUMBNAIL + item.imagen }}
         />
       }
     </View>
   )
+  
 }
 
 export default CartItem

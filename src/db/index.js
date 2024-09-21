@@ -1,6 +1,5 @@
 import * as SQLite from 'expo-sqlite'
 
-
 export const init = async () => {
     try {
         const db = await SQLite.openDatabaseAsync('sessions.db')
@@ -14,22 +13,20 @@ export const init = async () => {
     }
 }
 
-export const insertSession = async ( {localId,email,idToken}) => {
+export const insertSession = async ( { localId, email, idToken }) => {
     const db = await SQLite.openDatabaseAsync('sessions.db')
     const newSession = await db.runAsync(
         'INSERT INTO sessionUser (localId,email,idToken) VALUES (?,?,?)',
-        [localId,email,idToken]
+        [ localId, email, idToken ]
     )
     return newSession
 }
-
 
 export const fetchSession = async () => {
     const db = await SQLite.openDatabaseAsync('sessions.db')
     const sessionUser = await db.getFirstAsync('SELECT * FROM sessionUser')
     return sessionUser
 }
-
 
 export const deleteSession = async () => {
     const db = await SQLite.openDatabaseAsync('sessions.db')
