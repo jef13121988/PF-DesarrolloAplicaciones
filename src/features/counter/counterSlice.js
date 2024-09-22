@@ -14,7 +14,7 @@ export const counterSlice = createSlice({
         },
 
         decreaseQuantity: ( state ) => {
-            state.quantity += 1
+            state.quantity -= 1
         },
 
         resetQuantity: ( state ) => {
