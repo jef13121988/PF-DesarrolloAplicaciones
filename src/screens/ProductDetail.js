@@ -29,7 +29,7 @@ const ProductDetail = ({ route }) => {
   if( isLoading ) return <LoadingSpinner/>
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container} endFillColor={colors.black1}>
       <Pressable onPress={ () => navigation.navigate( "Image", { image: product.imagen } ) }>
         <Image
           style={styles.image}
@@ -57,7 +57,6 @@ export default ProductDetail
 
 const styles = StyleSheet.create({
   container:{
-    width:"100%",
     backgroundColor:colors.black1
   },
   containerText:{

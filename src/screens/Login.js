@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native'
 import { colors } from '../global/colors'
 import { useEffect, useState } from 'react'
 import InputForm from '../components/InputForm'
@@ -8,7 +8,6 @@ import { setUser } from '../features/auth/authSlice'
 import { useDispatch } from 'react-redux'
 import { loginSchema } from '../validations/loginSchema'
 import { deleteSession, insertSession } from '../db'
-
 
 const Login = ({ navigation }) => {
 
@@ -54,7 +53,7 @@ const Login = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.main}>
+    <ScrollView contentContainerStyle={styles.main} endFillColor={colors.black1}>
       <View style={styles.container}>
         <InputForm
           label="Email"
@@ -69,14 +68,15 @@ const Login = ({ navigation }) => {
           onChangeText={ ( t ) => setPassword( t ) }
           isSecure={true}
           error={errorPassword}
+          isPassword={true}
         />
         <SubmitButton onPress={onSubmit} title="Iniciar Sesión" />
         <Text style={styles.sub}>¿No tenés una cuenta?</Text>
-        <Pressable onPress={ () => navigation.navigate( "Register" ) } >
+        <Pressable onPress={ () => navigation.navigate( "Register" ) }>
           <Text style={styles.subLink}>Registrarme</Text>
         </Pressable>
       </View>
-    </View>
+    </ScrollView>
   )
   
 }
@@ -85,7 +85,6 @@ export default Login
 
 const styles = StyleSheet.create({
   main:{
-    flex:1,
     justifyContent:"center",
     alignItems:"center",
     backgroundColor:colors.black1

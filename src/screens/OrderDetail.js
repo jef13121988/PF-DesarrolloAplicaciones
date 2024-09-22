@@ -20,7 +20,7 @@ const OrderDetail = ({ route }) => {
       <FlatList
         data={order.items}
         keyExtractor={ item => item.id }
-        renderItem={ ({ item }) => <CartItem item={item} isCart={false} /> }
+        renderItem={ ({ item }) => <CartItem item={item} /> }
       />
       <Text style={styles.total}>Total: <FontAwesome6 name="coins" size={20} color="yellow" /> {order.total}</Text>
     </View>

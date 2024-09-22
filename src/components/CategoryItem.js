@@ -21,16 +21,9 @@ export default CategoryItem
 
 const styles = StyleSheet.create({
   container:{
-    width:"90%",
-    marginHorizontal:"5%",
-    backgroundColor:colors.green1,
-    marginVertical:7,
     padding:20,
     justifyContent:"center",
-    alignItems:"center",
-    borderRadius:100,
-    borderColor:colors.green2,
-    borderWidth:3
+    borderRadius:100
   },
   text:{
     fontSize:20,

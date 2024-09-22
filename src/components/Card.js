@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native'
+import { colors } from '../global/colors'
 
 const Card = ({ style, children }) => {
   
@@ -14,13 +15,20 @@ export default Card
 
 const styles = StyleSheet.create({
   container:{
-    shadowColor: "#000",
+    width:"90%",
+    marginHorizontal:"5%",
+    backgroundColor:colors.green1,
+    marginVertical:7,
+    alignItems:"center",
+    borderColor:colors.green2,
+    borderWidth:3,
+    shadowColor: colors.orange,
     shadowOffset: {
-      width: 0,
-      height: 1,
+      width: 7,
+      height: 7,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3
+    shadowOpacity: 1,
+    shadowRadius: 1,
+    elevation: 10
   }
 })

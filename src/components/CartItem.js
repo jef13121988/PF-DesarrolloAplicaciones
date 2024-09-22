@@ -6,6 +6,7 @@ import { URL_THUMBNAIL } from '../firebase/database'
 import { removeItemCart } from '../features/cart/cartSlice'
 import { useDispatch } from 'react-redux'
 import CartCounter from './CartCounter'
+import Card from './Card'
 
 const CartItem = ({ item, isCart }) => {
 
@@ -16,7 +17,7 @@ const CartItem = ({ item, isCart }) => {
   }
 
   return (
-    <View style={styles.container}>
+    <Card style={styles.container}>
       <View style={styles.containerText}>
         <Text style={styles.title}>{item.nombre}</Text>
         <Text style={styles.text}>Precio: <FontAwesome6 name="coins" size={20} color="yellow" /> {item.precio}</Text>
@@ -38,7 +39,7 @@ const CartItem = ({ item, isCart }) => {
           source={{ uri: URL_THUMBNAIL + item.imagen }}
         />
       }
-    </View>
+    </Card>
   )
   
 }
@@ -47,13 +48,8 @@ export default CartItem
 
 const styles = StyleSheet.create({
   container:{
-    width:"90%",
-    marginHorizontal:"5%",
-    backgroundColor:colors.green2,
-    marginVertical:10,
     padding:20,
     flexDirection:"row",
-    alignItems:"center",
     justifyContent:"space-between",
     borderRadius:35
   },

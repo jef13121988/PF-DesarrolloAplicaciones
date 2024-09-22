@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { StyleSheet, Text, View, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native'
 import { colors } from '../global/colors'
 import InputForm from '../components/InputForm'
 import SubmitButton from '../components/SubmitButton'
@@ -17,7 +17,7 @@ const Register = ({ navigation }) => {
   const [ errorEmail, setErrorEmail ] = useState("")
   const [ errorPassword, setErrorPassword ] = useState("")
   const [ errorConfirmPassword, setErrorConfirmPassword ] = useState("")
-  const [ triggerRegister, { isError }] = useRegisterMutation()
+  const [ triggerRegister, { isError } ] = useRegisterMutation()
   const dispatch = useDispatch()
 
   useEffect( () => {
@@ -58,7 +58,7 @@ const Register = ({ navigation }) => {
   }
 
   return (
-    <View style={styles.main}>
+    <ScrollView contentContainerStyle={styles.main} endFillColor={colors.black1}>
       <View style={styles.container}>
         <InputForm
           label="Email"
@@ -73,6 +73,7 @@ const Register = ({ navigation }) => {
           onChangeText={ ( t ) => setPassword( t ) }
           isSecure={true}
           error = {errorPassword}
+          isPassword={true}
         />
         <InputForm
           label="Confirmar Contraseña"
@@ -80,14 +81,15 @@ const Register = ({ navigation }) => {
           onChangeText={ ( t ) => setConfirmPassword( t ) }
           isSecure={true}
           error={errorConfirmPassword}
+          isPassword={true}
         />
         <SubmitButton onPress={onSubmit} title="Registrarme" />
         <Text style={styles.sub}>¿Ya tenés una cuenta?</Text>
-        <Pressable onPress={ () => navigation.navigate( "Login" ) } >
+        <Pressable onPress={ () => navigation.navigate( "Login" ) }>
           <Text style={styles.subLink}>Iniciar Sesión</Text>
         </Pressable>
       </View>
-    </View>
+    </ScrollView>
   )
   
 }
@@ -96,8 +98,6 @@ export default Register
 
 const styles = StyleSheet.create({
   main:{
-    flex:1,
-    justifyContent:"center",
     alignItems:"center",
     backgroundColor:colors.black1
   },
