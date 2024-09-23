@@ -37,3 +37,6 @@ yarn-error.*
 # Excel
 *.xlsx
 *.txt
+
+# eas
+eas.json
